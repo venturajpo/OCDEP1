@@ -1,50 +1,46 @@
 package numero;
 
-public class Flutuante extends Numero{
+public class Flutuante{
 	
-	protected boolean[] mantissa;
-	protected boolean[] expoente;
+	protected int[] mantissa;
+	protected int[] expoente;
+	protected boolean sinal;
+
 	
 	
 	public Flutuante() {
 	}
 	
-	public Flutuante (boolean sign, boolean[] exp, boolean[] mant) {
+	public Flutuante (boolean sign, int[] exp, int[] mant) {
 		
 	}
 
-	@Override
-	public Numero inverte(Numero valor) {
+	public static Flutuante inverte(Flutuante valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero soma(Numero valor) {
+	public static Flutuante soma(Flutuante valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero subtracao(Numero valor) {
+	public static Flutuante subtracao(Flutuante valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero multiplicacao(Numero valor) {
+	public static Flutuante multiplicacao(Flutuante valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero divisao(Numero valor) {
+	public static Flutuante divisao(Flutuante valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void print() {
+	public static void print() {
 		// TODO Auto-generated method stub
 		
 	}
