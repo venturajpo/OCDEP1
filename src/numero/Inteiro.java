@@ -1,48 +1,44 @@
 package numero;
 
-public class Inteiro extends Numero{
+public class Inteiro{
 	
-	protected boolean[] inteiro;
+	protected int[] inteiro;
+	protected boolean sinal;
+	int numBits;
 	
 	public Inteiro() {
 	}
 	
-	public Inteiro(boolean sign, boolean[] valor) {
+	public Inteiro(int nBits, int[] valor, boolean sign) {
 		
 	}
 
-	@Override
-	public Numero inverte(Numero valor) {
+	public static Inteiro inverte(Inteiro valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero soma(Numero valor) {
+	public static Inteiro soma(Inteiro valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero subtracao(Numero valor) {
+	public static Inteiro subtracao(Inteiro valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero multiplicacao(Numero valor) {
+	public static Inteiro multiplicacao(Inteiro valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Numero divisao(Numero valor) {
+	public static Inteiro divisao(Inteiro valor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void print() {
+	public static void print() {
 		// TODO Auto-generated method stub
 		
 	}
