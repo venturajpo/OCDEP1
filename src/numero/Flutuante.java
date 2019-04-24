@@ -40,7 +40,7 @@ public class Flutuante{
 		return null;
 	}
 
-	public static void print() {
+	public void print() {
 		// TODO Auto-generated method stub
 		
 	}
