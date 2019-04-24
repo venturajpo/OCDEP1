@@ -4,8 +4,14 @@ import numero.*;
 public class EP1OCD {
 	
 	private static int[] stringToIntArray(String str) {
-		
-		return null;
+		int[] retorno = new int[str.length()];
+		for(int i = 0; i < str.length(); ++i) {
+			if(str.charAt((str.length())- 1 - i) != '0' && str.charAt((str.length())- 1 - i) != '1')
+				return null;
+			else
+				retorno[i] = str.charAt((str.length())- 1 - i) == '0' ? 0 : 1;
+		}
+		return retorno;
 	}
 	
 	private static void chamaInteiro() {
@@ -15,6 +21,7 @@ public class EP1OCD {
 		int inteiro[] = {};
 		boolean sinal = false;
 		char sign = '\0';
+		char operacao = '\0';
 		Scanner kbd = new Scanner(System.in);
 		for(int i = 0; i < ints.length; ++i) {
 			System.out.println("Insira a quantidade de bits do " + priSeg[i] + " numero: ");
@@ -35,8 +42,27 @@ public class EP1OCD {
 			}
 			ints[i] = new Inteiro(numBits, inteiro, sinal);
 		}
+		
+		System.out.println("Insira o tipo de operação '+', '-', '*' ou '/': ");
+		operacao = kbd.next().charAt(0);
 		kbd.close();
 		
+		if(operacao == '+') {
+			Inteiro soma = Inteiro.soma(ints[0], ints[1]);
+			soma.print();
+		}
+		if(operacao == '-') {
+			Inteiro subtracao = Inteiro.subtracao(ints[0], ints[1]);
+			subtracao.print();
+		}
+		if(operacao == '*') {
+			Inteiro multiplicacao = Inteiro.multiplicacao(ints[0], ints[1]);
+			multiplicacao.print();
+		}
+		if(operacao == '/') {
+			Inteiro divisao = Inteiro.divisao(ints[0], ints[1]);
+			divisao.print();
+		}
 	}
 	private static void chamaFlutuante() {
 		
