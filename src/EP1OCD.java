@@ -17,50 +17,48 @@ public class EP1OCD {
 	private static void chamaInteiro() {
 		Inteiro[] ints = new Inteiro[2];
 		String[] priSeg = {"primeiro", "segundo"};
-		int numBits = 0;
 		int inteiro[] = {};
-		boolean sinal = false;
-		char sign = '\0';
 		char operacao = '\0';
 		Scanner kbd = new Scanner(System.in);
 		for(int i = 0; i < ints.length; ++i) {
-			System.out.println("Insira a quantidade de bits do " + priSeg[i] + " numero: ");
-			numBits = kbd.nextInt();
-			System.out.println("Insira o número em binário: ");
+			System.out.println("Insira o " + priSeg[i] + " número em binário: ");
 			inteiro = stringToIntArray(kbd.next());
-			while (true) {
-				System.out.println("O inteiro possui sinal? [S/N] ");
-				sign = kbd.next().charAt(0);
-				if(sign == 'S' || sign == 's') {
-					sinal = true;
-					break;
-				}
-				else if (sign == 'N' || sign == 'n') {
-					sinal = false;
-					break;
-				}
-			}
-			ints[i] = new Inteiro(numBits, inteiro, sinal);
+			ints[i] = new Inteiro(inteiro);
 		}
-		System.out.println("Insira o tipo de operação '+', '-', '*' ou '/': ");
-		operacao = kbd.next().charAt(0);
+		do {
+			System.out.println("Insira o tipo de operação '+', '-', '*' ou '/': ");
+			operacao = kbd.next().charAt(0);
+		}
+		while(operacao != '+' && operacao != '-' && operacao != '*' && operacao != '/');
 		kbd.close();
 		
 		if(operacao == '+') {
 			Inteiro soma = Inteiro.soma(ints[0], ints[1]);
-			soma.print();
+			if(soma == null)
+				System.out.println("overflow");
+			else
+				soma.print();
 		}
 		if(operacao == '-') {
 			Inteiro subtracao = Inteiro.subtracao(ints[0], ints[1]);
-			subtracao.print();
+			if(subtracao == null)
+				System.out.println("overflow");
+			else
+				subtracao.print();
 		}
 		if(operacao == '*') {
 			Inteiro multiplicacao = Inteiro.multiplicacao(ints[0], ints[1]);
-			multiplicacao.print();
+			if(multiplicacao == null)
+				System.out.println("overflow");
+			else
+				multiplicacao.print();
 		}
 		if(operacao == '/') {
 			Inteiro divisao = Inteiro.divisao(ints[0], ints[1]);
-			divisao.print();
+			if(divisao == null)
+				System.out.println("overflow");
+			else
+				divisao.print();
 		}
 	}
 	

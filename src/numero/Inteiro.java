@@ -4,13 +4,10 @@ public class Inteiro{
 	
 	protected int[] inteiro;
 	int numBits;
-	protected boolean sinalizado;
+	//protected boolean sinal;
 	protected int resto;
 	
 	public int getInteiroEm(int indice) {
-		int excesso = 0;
-		if(sinalizado && inteiro[inteiro.length -1] == 1) excesso = 1;
-		if(indice >= numBits) return excesso;
 		return inteiro[indice];
 	}
 	
@@ -18,39 +15,37 @@ public class Inteiro{
 	public Inteiro() {
 	}
 	
-	public Inteiro(int nBits, int[] valor, boolean sign) {
-		this.numBits = nBits;
-		this.sinalizado = sign;
-		int excesso = 0;
-		if(sinalizado && valor[valor.length - 1] == 1) excesso = 1;
-		
-		this.inteiro = new int[this.numBits];
-		
-		for(int i: this.inteiro)
-		{
-			inteiro[i] = excesso;
-		}
+	public Inteiro(int[] valor) {
+		this.inteiro = new int[valor.length];
 		for(int i = 0; i < valor.length; ++i) {
 			this.inteiro[i] = valor[i];
 		}
+		this.numBits = inteiro.length;
 		this.resto = -1;
 	}
 
 	public static Inteiro nega(Inteiro valor) {
-		// TODO Auto-generated method stub
-		return null;
+		int[] pInvertido = new int[valor.numBits];
+		int[] pUm = new int[valor.numBits];
+		pUm[0] = 1;
+		
+		for(int i = 0; i < valor.numBits; ++i) {
+			pInvertido[i] = valor.getInteiroEm(i) == 0 ? 1 : 0;
+		}
+		Inteiro invertido = new Inteiro(pInvertido);
+		Inteiro um = new Inteiro(pUm);
+		
+		return Inteiro.soma(invertido, um);
+		
 	}
 
 	public static Inteiro soma(Inteiro valor1, Inteiro valor2) {
-		
-		boolean sign = valor1.sinalizado || valor2.sinalizado;
-		int valorSinal = (valor1.sinalizado? 1 : 0) + (valor2.sinalizado? 1 : 0); 
-		
-		int nBits = 0;
-		if(valor1.numBits > valor2.numBits)
-			nBits = valor1.numBits;
-		else 
-			nBits = valor2.numBits;
+		int nBits = valor1.numBits;
+//		if(valor1.numBits > valor2.numBits)
+//			nBits = valor1.numBits;
+//		else 
+//			nBits = valor2.numBits;
+		boolean sinal = valor1.inteiro[nBits - 1] == valor2.inteiro[nBits - 1];
 		int[] pInteira = new int[nBits];
 		
 		int carry = 0;
@@ -67,22 +62,19 @@ public class Inteiro{
 			else {
 				carry = 0;
 				pInteira[i] = s;
-			}
-			//if(valorSinal ==)
-			
+			}			
 		}
 		
-		if(carry != 0 && valorSinal != 0) return null;
+		if(sinal && (valor1.inteiro[nBits-1] != pInteira[nBits-1])) return null;
 		
-		Inteiro resultado = new Inteiro(nBits, pInteira, sign);
+		Inteiro resultado = new Inteiro(pInteira);
 		
 		
 		return resultado;
 	}
 
 	public static Inteiro subtracao(Inteiro valor1, Inteiro valor2) {
-		// TODO Auto-generated method stub
-		return null;
+		return Inteiro.soma(valor1, Inteiro.nega(valor2));
 	}
 	public static Inteiro multiplicacao(Inteiro valor1, Inteiro valor2) {
 		// TODO Auto-generated method stub
