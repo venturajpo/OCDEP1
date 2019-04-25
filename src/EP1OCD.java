@@ -15,7 +15,7 @@ public class EP1OCD {
 	}
 	
 	private static void chamaInteiro() {
-		Inteiro[] ints = new Inteiro[2];
+		int[][] ints = new int[2][];
 		String[] priSeg = {"primeiro", "segundo"};
 		int inteiro[] = {};
 		char operacao = '\0';
@@ -23,7 +23,7 @@ public class EP1OCD {
 		for(int i = 0; i < ints.length; ++i) {
 			System.out.println("Insira o " + priSeg[i] + " número em binário: ");
 			inteiro = stringToIntArray(kbd.next());
-			ints[i] = new Inteiro(inteiro);
+			ints[i] = new int[inteiro.length];
 		}
 		do {
 			System.out.println("Insira o tipo de operação '+', '-', '*' ou '/': ");
@@ -31,35 +31,22 @@ public class EP1OCD {
 		}
 		while(operacao != '+' && operacao != '-' && operacao != '*' && operacao != '/');
 		kbd.close();
-		
+		//Inteiro.igualar(ints[0], ints[1]);
+		inteiro = null;
 		if(operacao == '+') {
-			Inteiro soma = Inteiro.soma(ints[0], ints[1]);
-			if(soma == null)
-				System.out.println("overflow");
-			else
-				soma.print();
+			inteiro = Inteiro.soma(ints[0], ints[1]);
 		}
 		if(operacao == '-') {
-			Inteiro subtracao = Inteiro.subtracao(ints[0], ints[1]);
-			if(subtracao == null)
-				System.out.println("overflow");
-			else
-				subtracao.print();
+			inteiro = Inteiro.subtracao(ints[0], ints[1]);
 		}
 		if(operacao == '*') {
-			Inteiro multiplicacao = Inteiro.multiplicacao(ints[0], ints[1]);
-			if(multiplicacao == null)
-				System.out.println("overflow");
-			else
-				multiplicacao.print();
+			inteiro = Inteiro.multiplicacao(ints[0], ints[1]);
 		}
 		if(operacao == '/') {
-			Inteiro divisao = Inteiro.divisao(ints[0], ints[1]);
-			if(divisao == null)
-				System.out.println("overflow");
-			else
-				divisao.print();
+			inteiro = Inteiro.divisao(ints[0], ints[1]);
 		}
+		
+		Inteiro.print(inteiro);
 	}
 	
 	private static void chamaFlutuante() {
